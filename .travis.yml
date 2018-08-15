@@ -5,12 +5,17 @@ sudo: required
 matrix:
   include:
     - language: java
+      jdk:
+        - oraclejdk8
       install: true
       os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       before_install:
-        - brew update
-        - brew outdated xctool || brew upgrade xctool
+        - brew tap caskroom/versions
+        - brew cask install java8
+        - export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+        - java -version
+
         - npm install -g appium
       script:
         - ./gradlew clean build xcuiTest -x test -x signArchives
