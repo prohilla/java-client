@@ -187,7 +187,7 @@ public class NewAppiumSessionPayload implements Closeable {
         Map<String, Object> always = alwaysMatch;
         Collection<Map<String, Object>> firsts = getFirstMatch();
         if (firsts == null) {
-            firsts = ImmutableList.of(of());
+            firsts = ImmutableList.of(ImmutableMap.of());
         }
 
         if (firsts.isEmpty()) {
